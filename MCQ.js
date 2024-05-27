@@ -33,16 +33,11 @@ class MCQ {
             console.error("Failed to fetch questions:", err);
         }
     }
-    
+
     selectRandomQuestions() {
         const allKeys = Object.keys(this.allQuestions);
         const selectedQuestions = {};
         const usedIndexes = new Set();
-
-        if (allKeys.length < this.numberOfOptions) {
-            console.error("Not enough questions to select from.");
-            return;
-        }
 
         while (Object.keys(selectedQuestions).length < this.numberOfOptions) {
             const randomIndex = Math.floor(Math.random() * allKeys.length);
