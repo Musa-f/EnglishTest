@@ -8,6 +8,22 @@ class MCQ {
         this.numberOfOptions = 4;
     }
 
+    getAllQuestions() {
+        return this.allQuestions;
+    }
+
+    getOptions() {
+        return this.options;
+    }
+
+    getQuestion(){
+        return this.question;
+    }
+
+    getAnswer(){
+        return this.answer;
+    }
+
     async fetchQuestions() {
         try {
             const response = await fetch("./data.json");
@@ -17,24 +33,7 @@ class MCQ {
             console.error("Failed to fetch questions:", err);
         }
     }
-
-    getAllQuestions() {
-        return this.allQuestions;
-    }
-
-    getOptions() {
-        return this.options;
-    }
     
-    getQuestion(){
-        return this.question;
-    }
-
-    getAnswer(){
-        return this.answer;
-    }
-
-
     selectRandomQuestions() {
         const allKeys = Object.keys(this.allQuestions);
         const selectedQuestions = {};
@@ -68,3 +67,5 @@ class MCQ {
 }
 
 
+//TODO: retirer de la liste toutes les réponses positives
+//TODO: ajouter un compteur
