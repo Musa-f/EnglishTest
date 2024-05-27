@@ -1,4 +1,6 @@
 let mcq;
+let questionContainer = document.querySelector("div.question");
+let options = document.querySelectorAll("button.option");
 
 async function initializeMCQ() {
     mcq = new MCQ("words");
@@ -10,16 +12,32 @@ async function throwQuestion() {
     mcq.selectRandomQuestions();
     mcq.selectRandomResult();
 
-    let quizContainer = document.querySelector("div.quiz-container");
-    let options = quizContainer.querySelectorAll("button[data-option]");
-
+    questionContainer.innerHTML = mcq.getQuestion();
     let optionsArray = Object.values(mcq.getOptions());
 
     options.forEach((option, index) => {
         option.innerHTML = optionsArray[index];
+        option.classList.remove("correct", "incorrect"); 
+        option.addEventListener("click", handleOptionClick);
     });
+}
 
-    console.log(options);
+function handleOptionClick(event) {
+    let selectedOption = event.target;
+    let answer = document.querySelector("div.answer");
+
+    if (selectedOption.textContent === mcq.getAnswer()) {
+        selectedOption.classList.add("correct");
+    } else {
+        selectedOption.classList.add("incorrect");
+        answer.innerHTML = "Réponse : " + mcq.getAnswer();
+        setTimeout(() => {
+            selectedOption.classList.remove("incorrect");
+            answer.innerHTML = "";
+        }, 2000); 
+    }
+
+    setTimeout(throwQuestion, 2000);
 }
 
 throwQuestion();

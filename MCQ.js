@@ -1,8 +1,8 @@
 class MCQ {
     constructor(dataType) {
         this.dataType = dataType;
+        this.question = "";
         this.answer = "";
-        this.result = "";
         this.options = [];
         this.allQuestions = [];
         this.numberOfOptions = 4;
@@ -25,10 +25,15 @@ class MCQ {
     getOptions() {
         return this.options;
     }
-
-    getResult(){
-        return this.result;
+    
+    getQuestion(){
+        return this.question;
     }
+
+    getAnswer(){
+        return this.answer;
+    }
+
 
     selectRandomQuestions() {
         const allKeys = Object.keys(this.allQuestions);
@@ -57,7 +62,8 @@ class MCQ {
         const optionKeys = Object.keys(this.options);
         const randomIndex = Math.floor(Math.random() * optionKeys.length);
         const randomKey = optionKeys[randomIndex];
-        this.result = this.options[randomKey];
+        this.question = randomKey;
+        this.answer = this.options[randomKey];
     }
 }
 
