@@ -1,9 +1,18 @@
 let mcq;
-let questionContainer = document.querySelector("div.question");
+let questionContainer = document.querySelector("div.question h1");
 let options = document.querySelectorAll("button.option");
 
+let url = window.location.href;
+let type = "";
+
+if(url.includes("expressions")){
+    type = "expressions";
+}else{
+    type = "mots";
+}
+
 async function initializeMCQ() {
-    mcq = new MCQ("words");
+    mcq = new MCQ(type);
     await mcq.fetchQuestions();
 }
 

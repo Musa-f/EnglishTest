@@ -1,30 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mots métiers</title>
+    <title>Vocabulaire anglais</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <style>
     .correct{
-        color:green;
+        background-color: #0CCE6B;
+        color:white;
+        border:none;
     }
 
     .incorrect{
-        color:red;
+        color: #EF2D56;
     }
 </style>
 
-    <h1>50 mots métier</h1>
-    <p>le mot sera donné en français, vous aurez 4 propositions de mots en anglais, il faudra choisir la bonne réponse.</p>
-
-    <hr>
+    <div id="types">
+        <a href="questions.html?words"><button>50 mots</button></a>
+        <a href="questions.html?expressions"><button>50 expressions</button></a>
+    </div>
 
     <div class="quiz-container">
-        <div class="question"></div>
+        <div class="question"><h1></h1></div>
         <div class="options">
             <button class="option"></button>
             <button class="option"></button>

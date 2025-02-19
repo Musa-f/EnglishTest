@@ -6,6 +6,8 @@ class MCQ {
         this.options = [];
         this.allQuestions = [];
         this.numberOfOptions = 4;
+        this.totalCounter = 0;
+        this.actualCounter = this.totalCounter;
     }
 
     getAllQuestions() {
@@ -29,6 +31,8 @@ class MCQ {
             const response = await fetch("./data.json");
             const data = await response.json();
             this.allQuestions = data[this.dataType];
+            this.totalCounter = Object.keys(this.allQuestions).length;
+            //console.log(this.totalCounter);
         } catch (err) {
             console.error("Failed to fetch questions:", err);
         }
@@ -59,8 +63,16 @@ class MCQ {
         this.question = randomKey;
         this.answer = this.options[randomKey];
     }
+
+    
 }
 
 
-//TODO: retirer de la liste toutes les réponses positives
-//TODO: ajouter un compteur
+/*
+TODO:
+- Faire une copie la liste initiale
+- Faire une fonction qui gère cette liste
+- A chaque fois que la question est lancée, cette même question est retirée de la copie de la liste
+- le compteur est également incrémenté
+
+*/
